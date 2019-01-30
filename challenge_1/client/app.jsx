@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ReactDOM } from 'react-dom';
 import axios from 'axios';
-import Event from './components/Event.jsx';
+import EventList from './components/EventList.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class App extends Component {
         >
           Submit
         </button>
-        <Event />
+        <EventList />
       </div>
     );
   }

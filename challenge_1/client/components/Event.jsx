@@ -4,13 +4,13 @@ const Event = () => {
   return (
     <div className='eventItem'>
       <div>
-        <h2>Category</h2>
+        <h3>Category</h3>
       </div>
       <div>
-        <h2>Date</h2>
+        <h3>Date</h3>
       </div>
       <div>
-        <h2>Description</h2>
+        <h3>Description</h3>
       </div>
 
     </div>
