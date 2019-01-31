@@ -11,7 +11,8 @@ class App extends Component {
       searchKeyword: '',
       currentPage: 1,
       numberOfPages: 0,
-      eventData: []
+      eventData: [],
+      perPage: 10
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.getEvents = this.getEvents.bind(this);
@@ -20,11 +21,11 @@ class App extends Component {
 
   getEvents(e) {
     e.preventDefault();
-    let { searchKeyword, currentPage } = this.state;
+    let { searchKeyword, currentPage, perPage } = this.state;
     axios.get(`/events?q=${searchKeyword}`)
       .then((response) => {
         this.setState({
-          numberOfPages: response.data.length / 10
+          numberOfPages: Math.ceil(response.data.length / perPage)
         }, () => {
           axios.get(`/events?q=${searchKeyword}&_page=${currentPage}`)
             .then(response => {
@@ -65,14 +66,15 @@ class App extends Component {
     });
   }
   render() {
+    let { eventData, numberOfPages } = this.state;
     return (
       <div style={{ margin: 20 }} >
         <h1>Historical Event Finder</h1>
         <Search handleInputChange={this.handleInputChange} getEvents={this.getEvents} />
-        <EventList eventData={this.state.eventData} />
+        <EventList eventData={eventData} />
         <ReactPaginate
           className="pagination"
-          pageCount={this.state.numberOfPages}
+          pageCount={numberOfPages}
           pageRangeDisplayed={5}
           forcePage={0}
           marginPagesDisplayed={1}
