@@ -27,19 +27,19 @@ class App extends Component {
         }, () => {
           axios.get(`/events?q=${searchKeyword}&_page=${currentPage}`)
             .then(response => {
-              console.log('get req success: ', response);
               this.setState({
                 currentPage: 1,
                 eventData: response.data
               });
             })
             .catch(err => {
-              console.log('get req pagination error: ', err);
+              console.log('Error ', err);
+              alert('Something went wrong!');
             });
         });
       })
       .catch(error => {
-        console.log('get req pagination error:', error);
+        alert('Something went wrong!');
       });
   }
 
@@ -54,19 +54,15 @@ class App extends Component {
     }, () => {
       axios.get(`/events?q=${this.state.searchKeyword}&_page=${this.state.currentPage}`)
         .then(response => {
-          console.log('get req success for a different page: ', response);
           this.setState({
             eventData: response.data
           });
         })
         .catch(err => {
-          console.log('get req pagination error for a different page: ', err);
+          alert('Something went wrong!');
         })
     });
   }
-
-
-
   render() {
     return (
       <div style={{ margin: 20 }} >
