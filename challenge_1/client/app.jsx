@@ -18,7 +18,8 @@ class App extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
   }
 
-  getEvents() {
+  getEvents(e) {
+    e.preventDefault();
     let { searchKeyword, currentPage } = this.state;
     axios.get(`/events?q=${searchKeyword}`)
       .then((response) => {
