@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';;
+import NumberPad from './components/NumberPad.jsx';
+
 class App extends Component {
-  state = {}
+  constructor(props) {
+    super(props);
+  }
   render() {
-    return (  );
+    return (
+      <NumberPad />
+    );
   }
 }
 
