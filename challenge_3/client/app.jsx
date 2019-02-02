@@ -1,10 +1,14 @@
 import React, { Component } from 'react';;
 import NumberPad from './components/NumberPad.jsx';
+import ScoreBoard from './components/ScoreBoard.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { scores: {}, currentFrame: 0 };
+    this.state = {
+      scores: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0],],
+      currentFrame: 0
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -13,11 +17,15 @@ class App extends Component {
   }
 
   render() {
+    let { number, scores } = this.state;
     return (
-      <NumberPad
-        handleClick={this.handleClick}
-        number={this.state.number}
-      />
+      <div>
+        <NumberPad
+          handleClick={this.handleClick}
+          number={number}
+        />
+        <ScoreBoard scores={scores} />
+      </div>
     );
   }
 }
