@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Frame = ({ frame }) => {
-  var tableStyle = {
+const Frame = ({ frame, currentFrameTotal }) => {
+  let tableStyle = {
     "border": "1px solid black",
     "display": "inline-block"
   };
@@ -13,7 +13,7 @@ const Frame = ({ frame }) => {
           <td>{frame[1]}</td>
         </tr>
         <tr>
-          <td>{frame[0] + frame[1]}</td>
+          <td>{currentFrameTotal}</td>
         </tr>
       </tbody>
     </table>
