@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       scores: { 1: [0, 0], 2: [0, 0], 3: [0, 0], 4: [0, 0], 5: [0, 0], 6: [0, 0], 7: [0, 0], 8: [0, 0], 9: [0, 0], 10: [0, 0] },
       currentFrame: 1,
-      pinsLeft: 10,
+      pinsLeft: 11,
       ballsUsed: 0,
       frameTotal: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     };
@@ -33,7 +33,7 @@ class App extends Component {
       this.setState({
         currentFrame: currentFrame + 1,
         ballsUsed,
-        pinsLeft: 10,
+        pinsLeft: 11,
         scores,
         frameTotal
       });
