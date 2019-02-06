@@ -36,7 +36,7 @@ class App extends Component {
       scores[currentFrame][0] = Number(e.target.value);
       
       if(spare){
-        frameTotal[currentFrame - 1]+=Number(e.target.value)
+        frameTotal[currentFrame - 1]+=scores[currentFrame][0]
       }
       
       this.setState({
@@ -48,18 +48,17 @@ class App extends Component {
 
     } else {
       scores[currentFrame][1] = Number(e.target.value);
-      
+      let currentFrameScore = scores[currentFrame][0] + scores[currentFrame][1]
+
       if (strike){
-        frameTotal[currentFrame - 1]+=scores[currentFrame][0]
-        frameTotal[currentFrame - 1]+=scores[currentFrame][1]
+        frameTotal[currentFrame - 1]+=currentFrameScore
       }
 
+      // Calculate current frame score
+      frameTotal[currentFrame] += currentFrameScore  
       if (currentFrame > 0){
-        frameTotal[currentFrame] = frameTotal[currentFrame-1] + scores[currentFrame][0] + scores[currentFrame][1]
-      }
-      else {
-        frameTotal[currentFrame] = scores[currentFrame][0] + scores[currentFrame][1]
-      }
+        frameTotal[currentFrame] += frameTotal[currentFrame-1]
+      } 
 
       this.setState({
         ballsUsed,
@@ -69,8 +68,6 @@ class App extends Component {
       });
     }
   }
-
-
 
   render() {
     let { pinsLeft, scores, frameTotal } = this.state;
